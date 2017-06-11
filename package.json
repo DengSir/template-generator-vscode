@@ -1,0 +1,96 @@
+{
+    "name": "template-generator-vscode",
+    "displayName": "Template Generator",
+    "description": "Files/Folders template for vscode",
+    "version": "0.0.1",
+    "publisher": "DengSir",
+    "icon": "images/icon.jpg",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "main": "./out/src/extension",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DengSir/template-generator-vscode.git"
+    },
+    "engines": {
+        "vscode": "^1.12.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "Template",
+        "File",
+        "Folder"
+    ],
+    "activationEvents": [
+        "*",
+        "onCommand:templateGenerator.newFile",
+        "onCommand:templateGenerator.openTemplatesFolder"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "command": "templateGenerator.newFile",
+                "title": "New File from Template",
+                "category": "Files"
+            },
+            {
+                "command": "templateGenerator.openTemplatesFolder",
+                "title": "Open Templates Folder",
+                "category": "Template"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "templateGenerator.newFile",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "templateGenerator.newFile",
+                "key": "ctrl+alt+n"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Template Generator",
+            "properties": {
+                "templateGenerator.templatesPath": {
+                    "type": "string",
+                    "description": "Where do you want to save the template Settings?"
+                },
+                "templateGenerator.fields.author": {
+                    "type": "string",
+                    "description": "Custom fields of Template Generator: author"
+                },
+                "templateGenerator.fields.email": {
+                    "type": "string",
+                    "description": "Custom fields of Template Generator: email"
+                },
+                "templateGenerator.fields.link": {
+                    "type": "string",
+                    "description": "Custom fields of Template Generator: link"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    },
+    "dependencies": {
+        "mkdirp": "^0.5.1"
+    }
+}
