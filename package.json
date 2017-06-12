@@ -62,6 +62,16 @@
                     "type": "string",
                     "description": "Where do you want to save the template Settings?"
                 },
+                "templateGenerator.openFileByFileTemplate": {
+                    "type": "boolean",
+                    "description": "Open the file when the file is created by file template",
+                    "default": true
+                },
+                "templateGenerator.openFilesByFolderTemplate": {
+                    "type": "boolean",
+                    "description": "Open all files when the files is created by folder template",
+                    "default": false
+                },
                 "templateGenerator.fields.author": {
                     "type": "string",
                     "description": "Custom fields of Template Generator: author"

@@ -55,7 +55,14 @@ File content :
 
 This extension contributes the following settings:
 
+#### Settings
+
 * `templateGenerator.templatesPath` : Where do you want to save the template Settings
+* `templateGenerator.openFileByFileTemplate` : Open the file when the file is created by file template
+* `templateGenerator.openFilesByFolderTemplate` : Open all files when the files is created by folder template
+
+#### Fileds
+
 * `templateGenerator.fields.author` : Custom fields of Template Generator: author
 * `templateGenerator.fields.email` : Custom fields of Template Generator: email
 * `templateGenerator.fields.link` : Custom fields of Template Generator: link

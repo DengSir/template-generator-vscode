@@ -63,9 +63,14 @@ export class FileCreator {
             fs.writeFileSync(templateFile.targetPath, templateFile.content);
         }
 
-        if (template.isFile()) {
-            let uri = vscode.Uri.file(template.templateFiles[0].targetPath);
-            vscode.commands.executeCommand('vscode.open', uri);
+        let openFileConfig = env.config.get<boolean>(
+            template.isFile() ? 'openFileByFileTemplate' : 'openFilesByFolderTemplate'
+        );
+        if (openFileConfig) {
+            for (let templateFile of template.templateFiles) {
+                let uri = vscode.Uri.file(templateFile.targetPath);
+                vscode.commands.executeCommand('vscode.open', uri);
+            }
         }
     }
 }
