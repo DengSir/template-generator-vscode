@@ -14,16 +14,21 @@ import * as util from './util';
 import { TemplateFile } from './templateFile';
 
 export class Template implements vscode.QuickPickItem {
-    public templatePath: string;
+    public readonly templatePath: string;
 
     private _templateFiles: TemplateFile[];
     private _templateName: string;
     private _targetPath: string;
     private _label: string;
+    private _weight: string;
     private _isFile: boolean;
 
     public get label(): string {
         return (this._label = this._label || util.convert(this.templatePath, true));
+    }
+
+    public get weight(): string {
+        return (this._weight = this._weight || `${this.isFile() ? '0' : '1'}${this.label}`);
     }
 
     public get description(): string {

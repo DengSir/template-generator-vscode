@@ -11,7 +11,7 @@ import * as fs from 'fs';
 import * as util from './util';
 
 export class TemplateFile {
-    public templatePath: string;
+    public readonly templatePath: string;
 
     private _targetPath: string;
     private _content: string;

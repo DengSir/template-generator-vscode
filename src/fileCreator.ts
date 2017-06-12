@@ -17,17 +17,16 @@ import { Template } from './template';
 import { InputController } from './inputController';
 
 export class FileCreator {
-    public templates: vscode.QuickPickItem[];
+    public readonly templates: Template[];
 
     public constructor(targetFolderPath: string) {
         env.targetFolderPath = targetFolderPath;
 
-        this.templates = [];
-
-        fs
+        this.templates = fs
             .readdirSync(env.templatesFolderPath)
             .filter(f => !f.startsWith('.'))
-            .map(f => this.templates.push(new Template(f)));
+            .map(f => new Template(f))
+            .sort((a, b) => (a.weight < b.weight && -1) || (a.weight > b.weight && 1) || 0);
     }
 
     public async run() {
@@ -36,7 +35,7 @@ export class FileCreator {
             return;
         }
 
-        if (fs.existsSync(template.templatePath)) {
+        if (fs.existsSync(template.targetPath)) {
             throw Error('Target file/folder exists, can`t create.');
         }
 
@@ -55,13 +54,18 @@ export class FileCreator {
         }
 
         env.fileName = fileName;
-        return template as Template;
+        return template;
     }
 
     public createTemplate(template: Template) {
         for (let templateFile of template.templateFiles) {
             mkdirp.sync(path.dirname(templateFile.targetPath));
             fs.writeFileSync(templateFile.targetPath, templateFile.content);
+        }
+
+        if (template.isFile()) {
+            let uri = vscode.Uri.file(template.templateFiles[0].targetPath);
+            vscode.commands.executeCommand('vscode.open', uri);
         }
     }
 }

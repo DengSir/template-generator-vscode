@@ -8,25 +8,28 @@
 
 import * as vscode from 'vscode';
 
+import { Template } from './template';
+
 export interface IInput {
-    template?: vscode.QuickPickItem;
+    template?: Template;
     fileName?: string;
 }
 
-export class InputController {
-    private validateNameRegex: RegExp;
-
-    public constructor() {
-        if (process.platform === 'win32') {
-            this.validateNameRegex = /[/?*:|<>\\]/;
-        } else {
-            this.validateNameRegex = /\//;
-        }
+const validateNameRegex = ((): RegExp => {
+    if (process.platform === 'win32') {
+        return /[/?*:|<>\\]/;
+    } else if (process.platform === 'darwin') {
+        return /[/:]/;
+    } else {
+        return /\//;
     }
+})();
 
-    private async showTemplatePicker(templates: vscode.QuickPickItem[]) {
+export class InputController {
+    public constructor() {}
+
+    private async showTemplatePicker(templates: Template[]) {
         let template = await vscode.window.showQuickPick(templates, {
-            ignoreFocusOut: true,
             placeHolder: 'Select file/folder template:'
         });
         return template;
@@ -34,15 +37,13 @@ export class InputController {
 
     private async showNameInput() {
         let fileName = await vscode.window.showInputBox({
-            ignoreFocusOut: true,
             placeHolder: 'Input file/folder name',
-            validateInput: text =>
-                this.validateNameRegex.test(text) ? 'Invalidate file name' : null
+            validateInput: text => (validateNameRegex.test(text) ? 'Invalidate file name' : null)
         });
         return fileName;
     }
 
-    public async run(templates: vscode.QuickPickItem[]): Promise<IInput> {
+    public async run(templates: Template[]): Promise<IInput> {
         let template = await this.showTemplatePicker(templates);
         if (!template) {
             return {};
