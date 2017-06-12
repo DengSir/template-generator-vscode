@@ -16,6 +16,7 @@ export interface IFields {
     author?: string;
     email?: string;
     link?: string;
+    date?: string;
 }
 
 class Env {
@@ -35,6 +36,7 @@ class Env {
     public get fields(): IFields {
         return {
             name: this.fileName,
+            date: new Date().toLocaleString(),
             author: this.config.get<string>('fields.author'),
             email: this.config.get<string>('fields.email'),
             link: this.config.get<string>('fields.link')

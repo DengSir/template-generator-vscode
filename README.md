@@ -24,6 +24,7 @@
 * `{__author__}` : author
 * `{__email__}` : email
 * `{__link__}` : link
+* `{__date__}` : create time
 
 You can define the name displayed on the template selector, like:
 
@@ -44,6 +45,7 @@ File content :
 # {__name__}.py
 # @Author : {__author__} ({__email__})
 # @Link   : {__link__}
+# @Date   : {__date__}
 
 ```
 

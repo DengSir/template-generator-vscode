@@ -13,7 +13,7 @@ import env from './env';
 
 export function convert(content: string, ignore_variables?: boolean): string {
     return content.replace(
-        /\{__(name|email|author|link)__.?([^{}]*)\}/g,
+        /\{__(name|email|author|link|date)__.?([^{}]*)\}/g,
         (_, key, description) => (!ignore_variables ? env.fields[key] || '' : description)
     );
 }
