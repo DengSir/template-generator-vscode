@@ -1,11 +1,13 @@
 # Template Generator
 
+This extension helps in creating files and folders easily from defined templates.
+
 ## Features
 
 * File template support
 * Folder template support
 
-## How to Use
+## Usages
 
 ### Commands
 
@@ -50,6 +52,15 @@ File content :
 ```
 
 [More Example](https://github.com/DengSir/template-generator-example)
+
+### Default templates
+
+* `html.html`
+* `javascript.js`
+* `lua.lua`
+* `python.py`
+* `typescript.ts`
+* `python Folder`
 
 ## Extension Settings
 

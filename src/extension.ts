@@ -5,6 +5,7 @@ import * as util from './util';
 
 import env from './env';
 import { FileCreator } from './fileCreator';
+import { SettingController } from './settingController';
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
@@ -34,6 +35,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
         })
     );
+
+    new SettingController().initTemplates();
 }
 
 export function deactivate() {}
