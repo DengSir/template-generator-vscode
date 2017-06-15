@@ -1,5 +1,5 @@
 /**
- * @File   : env.ts
+ * @File   : environment.ts
  * @Author : DengSir (tdaddon@163.com)
  * @Link   : https://dengsir.github.io/
  */
@@ -19,7 +19,7 @@ export interface IFields {
     date?: string;
 }
 
-class Env {
+export class Environment {
     public fileName: string;
     public targetFolderPath: string;
 
@@ -43,7 +43,9 @@ class Env {
         };
     }
 
-    public constructor() {}
-}
+    private constructor() {}
 
-export default new Env();
+    public static getInstance() {
+        return new Environment();
+    }
+}
