@@ -17,8 +17,8 @@ This extension helps in creating files and folders easily from defined templates
 ### Default templates path
 
 * Windows : %HOMEPATH%/.vscode/templates
-* Linux :
-* Mac :
+* Linux : ~/.vscode/templates
+* Mac : ~/.vscode/templates
 
 ### Custom fields
 
