@@ -14,10 +14,7 @@ import env from './environment';
 export function convert(content: string, ignore_variables?: boolean): string {
     return content.replace(
         /\{__(name|email|author|link|date)__\.?([^{}]*)\}/g,
-        (_, key, description) => {
-            console.log(key, description);
-            return !ignore_variables ? env.fields[key] || '' : description;
-        }
+        (_, key, description) => (!ignore_variables ? env.fields[key] || '' : description)
     );
 }
 
