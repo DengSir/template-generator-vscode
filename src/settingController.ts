@@ -9,9 +9,7 @@ import * as path from 'path';
 import * as mkdirp from 'mkdirp';
 import * as util from './util';
 
-import { Environment } from './environment';
-
-const env = Environment.getInstance();
+import env from './environment';
 
 const templates = {
     '{__name__.python}.py': `#!/usr/bin/env python

@@ -11,11 +11,10 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as mkdirp from 'mkdirp';
 
-import { Environment } from './environment';
+import env from './environment';
+
 import { Template } from './template';
 import { InputController } from './inputController';
-
-const env = Environment.getInstance();
 
 export class FileCreator {
     public readonly templates: Template[];
