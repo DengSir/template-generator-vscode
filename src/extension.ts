@@ -3,11 +3,10 @@
 import * as vscode from 'vscode';
 import * as util from './util';
 
-import { Environment } from './environment';
+import env from './environment';
+
 import { FileCreator } from './fileCreator';
 import { SettingController } from './settingController';
-
-const env = Environment.getInstance();
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(

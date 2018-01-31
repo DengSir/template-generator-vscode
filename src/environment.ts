@@ -42,10 +42,6 @@ export class Environment {
             link: this.config.get<string>('fields.link')
         };
     }
-
-    private constructor() {}
-
-    public static getInstance() {
-        return new Environment();
-    }
 }
+
+export default new Environment();

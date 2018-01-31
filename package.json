@@ -2,7 +2,7 @@
     "name": "template-generator-vscode",
     "displayName": "Template Generator",
     "description": "Files/Folders template for vscode",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "DengSir",
     "icon": "images/icon.jpg",
     "license": "SEE LICENSE IN LICENSE.md",
@@ -101,6 +101,7 @@
         "@types/mocha": "^2.2.32"
     },
     "dependencies": {
+        "@types/mkdirp": "^0.5.2",
         "mkdirp": "^0.5.1"
     }
 }
