@@ -1,18 +1,16 @@
-'use strict';
-
 import * as vscode from 'vscode';
+import * as path from 'path';
 import * as util from './util';
 
 import env from './environment';
 
 import { FileCreator } from './fileCreator';
-import { SettingController } from './settingController';
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.commands.registerCommand('templateGenerator.newFile', async function(e: vscode.Uri) {
             try {
-                util.checkTemplatesFolder();
+                await util.checkTemplatesFolder();
 
                 let targetFolderPath = e && e.fsPath ? e.fsPath : vscode.workspace.rootPath;
                 let fileCreator = new FileCreator(targetFolderPath);
@@ -25,9 +23,9 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('templateGenerator.openTemplatesFolder', function() {
+        vscode.commands.registerCommand('templateGenerator.openTemplatesFolder', async function() {
             try {
-                util.checkTemplatesFolder();
+                await util.checkTemplatesFolder();
 
                 let uri = vscode.Uri.file(env.templatesFolderPath);
                 vscode.commands.executeCommand('vscode.openFolder', uri, true);
@@ -37,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
         })
     );
 
-    new SettingController().initTemplates();
+    env.context = context;
 }
 
 export function deactivate() {}

@@ -27,6 +27,11 @@ This extension helps in creating files and folders easily from defined templates
 * `{__email__}` : email
 * `{__link__}` : link
 * `{__date__}` : create time
+* `{__camelCaseName__}` : camelCaseFileName
+* `{__pascalCaseName__}` : PascalCaseFileName
+* `{__snakeCaseName__}` : snake_case_file_name
+* `{__kebabCaseName__}` : kebab-case-file-name
+* `{__lowerDotCaseName__}` : lower.dot.case.file.name
 
 You can define the name displayed on the template selector, like:
 

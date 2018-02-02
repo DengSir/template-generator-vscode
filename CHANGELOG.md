@@ -5,3 +5,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - Initial release
+
+## [0.3.0]
+### Added
+- camel case
+- pascal case
+- snake case
+- kebab case
+- lower dot case

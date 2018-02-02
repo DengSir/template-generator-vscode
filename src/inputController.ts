@@ -4,8 +4,6 @@
  * @Link   : https://dengsir.github.io/
  */
 
-'use strict';
-
 import * as vscode from 'vscode';
 
 import { Template } from './template';
