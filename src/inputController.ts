@@ -28,7 +28,7 @@ export class InputController {
 
     private async showTemplatePicker(templates: Template[]) {
         let template = await vscode.window.showQuickPick(templates, {
-            placeHolder: 'Select file/folder template:'
+            placeHolder: 'Select file/folder template:',
         });
         return template;
     }
@@ -36,7 +36,7 @@ export class InputController {
     private async showNameInput() {
         let fileName = await vscode.window.showInputBox({
             placeHolder: 'Input file/folder name',
-            validateInput: text => (validateNameRegex.test(text) ? 'Invalidate file name' : null)
+            validateInput: text => (validateNameRegex.test(text) ? 'Invalidate file name' : null),
         });
         return fileName;
     }

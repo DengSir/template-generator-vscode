@@ -12,7 +12,7 @@ import env from './environment';
 export function convert(content: string, ignore_variables?: boolean): string {
     return content.replace(
         /\{__(name|email|author|link|date|camelCaseName|pascalCaseName|snakeCaseName|kebabCaseName|lowerDotCaseName)__\.?([^{}]*)\}/g,
-        (_, key, description) => (!ignore_variables ? env.fields[key] || '' : description)
+        (_, key, description) => (!ignore_variables ? env.fields[key] || '' : description),
     );
 }
 
@@ -58,7 +58,7 @@ async function copyFolder(src, dst) {
             } else if (stats.isFile()) {
                 await copyFile(source, target);
             }
-        })
+        }),
     );
 }
 

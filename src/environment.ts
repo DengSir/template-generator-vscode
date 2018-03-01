@@ -8,6 +8,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as os from 'os';
 import * as _ from 'lodash';
+import { once } from './decorators';
 
 export class Fields {
     private _name: string;
@@ -21,30 +22,32 @@ export class Fields {
         return this._name;
     }
 
+    @once('_camelCaseName')
     public get camelCaseName() {
-        return (this._camelCaseName = this._camelCaseName || _.camelCase(this._name));
+        return _.camelCase(this._name);
     }
 
+    @once('_pascalCaseName')
     public get pascalCaseName() {
-        return (this._pascalCaseName =
-            this._pascalCaseName ||
-            _.chain(this._name)
-                .camelCase()
-                .upperFirst()
-                .value());
+        return _.chain(this._name)
+            .camelCase()
+            .upperFirst()
+            .value();
     }
 
+    @once('_snakeCaseName')
     public get snakeCaseName() {
-        return (this._snakeCaseName = this._snakeCaseName || _.snakeCase(this._name));
+        return _.snakeCase(this._name);
     }
 
+    @once('_kebabCaseName')
     public get kebabCaseName() {
-        return (this._kebabCaseName = this._kebabCaseName || _.kebabCase(this._name));
+        return _.kebabCase(this._name);
     }
 
+    @once('_lowerDotCaseName')
     public get lowerDotCaseName() {
-        return (this._lowerDotCaseName =
-            this._lowerDotCaseName || this.snakeCaseName.replace(/_/g, '.'));
+        return this.snakeCaseName.replace(/_/g, '.');
     }
 
     public set name(name: string) {
@@ -87,9 +90,7 @@ export class Environment {
     }
 
     public get templatesFolderPath(): string {
-        return (
-            this.config.get<string>('templatesPath') || path.join(os.homedir(), '.vscode/templates')
-        );
+        return this.config.get<string>('templatesPath') || path.join(os.homedir(), '.vscode/templates');
     }
 
     public set fileName(fileName: string) {

@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
             } catch (error) {
                 vscode.window.showErrorMessage(`Template Generator: ${error.message}`);
             }
-        })
+        }),
     );
 
     context.subscriptions.push(
@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
             } catch (error) {
                 vscode.window.showErrorMessage(`Template Generator: ${error.message}`);
             }
-        })
+        }),
     );
 
     env.context = context;

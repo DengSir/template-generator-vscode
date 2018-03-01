@@ -62,7 +62,7 @@ export class FileCreator {
         }
 
         let openFileConfig = env.config.get<boolean>(
-            template.isFile() ? 'openFileByFileTemplate' : 'openFilesByFolderTemplate'
+            template.isFile() ? 'openFileByFileTemplate' : 'openFilesByFolderTemplate',
         );
         if (openFileConfig) {
             for (let templateFile of template.templateFiles) {

@@ -8,23 +8,19 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as util from './util';
 
+import { once } from './decorators';
+
 export class TemplateFile {
-    public readonly templatePath: string;
+    public constructor(public readonly templatePath: string) {}
 
-    private _targetPath: string;
-    private _content: string;
-
+    @once()
     public get targetPath(): string {
-        return (this._targetPath =
-            this._targetPath || util.absTargetPath(util.convert(this.templatePath)));
+        return util.absTargetPath(util.convert(this.templatePath));
     }
 
+    @once()
     public get content(): string {
-        return (this._content = this._content || util.convert(this.read()));
-    }
-
-    public constructor(templatePath: string) {
-        this.templatePath = templatePath;
+        return util.convert(this.read());
     }
 
     private read(): string {
