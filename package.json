@@ -2,7 +2,7 @@
     "name": "template-generator-vscode",
     "displayName": "Template Generator",
     "description": "Files/Folders template for vscode",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "DengSir",
     "icon": "images/icon.jpg",
     "license": "SEE LICENSE IN LICENSE.md",
