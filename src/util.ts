@@ -11,7 +11,7 @@ import env from './environment';
 
 export function convert(content: string, ignore_variables?: boolean): string {
     return content.replace(
-        /\{__(name|email|author|link|date|camelCaseName|pascalCaseName|snakeCaseName|kebabCaseName|lowerDotCaseName)__\.?([^{}]*)\}/g,
+        /\{__(name|email|author|link|date|delete|camelCaseName|pascalCaseName|snakeCaseName|kebabCaseName|lowerDotCaseName)__\.?([^{}]*)\}/g,
         (_, key, description) => (!ignore_variables ? env.fields[key] || '' : description),
     );
 }

@@ -32,6 +32,7 @@ This extension helps in creating files and folders easily from defined templates
 * `{__snakeCaseName__}` : snake_case_file_name
 * `{__kebabCaseName__}` : kebab-case-file-name
 * `{__lowerDotCaseName__}` : lower.dot.case.file.name
+* `{__delete__}` : empty string
 
 You can define the name displayed on the template selector, like:
 

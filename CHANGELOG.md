@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 - Initial release
 
+## [0.4.0]
+### Added
+- field {\_\_delete\_\_}
+
 ## [0.3.0]
 ### Added
 - camel case
