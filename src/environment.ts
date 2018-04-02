@@ -17,9 +17,15 @@ export class Fields {
     private _snakeCaseName: string;
     private _kebabCaseName: string;
     private _lowerDotCaseName: string;
+    private _upperCamelCaseName : string;
 
     public get name() {
         return this._name;
+    }
+
+    @once('_upperCamelCaseName')
+    public get upperCamelCaseName() {
+        return this._name.charAt(0).toUpperCase() + _.camelCase(this._name).substring(1);
     }
 
     @once('_camelCaseName')
@@ -57,6 +63,7 @@ export class Fields {
         this._snakeCaseName = null;
         this._kebabCaseName = null;
         this._lowerDotCaseName = null;
+        this._upperCamelCaseName = null;
     }
 
     public get date() {
