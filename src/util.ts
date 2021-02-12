@@ -33,7 +33,7 @@ function copyFile(src, dst) {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve();
+                    resolve(undefined);
                 }
             });
     });
