@@ -90,11 +90,21 @@ export class Environment {
     }
 
     public get templatesFolderPath(): string {
-        return this.config.get<string>('templatesPath') || path.join(os.homedir(), '.vscode/templates');
+        const configPath = this.config.get<string>('templatesPath') || path.join(os.homedir(), '.vscode/templates');
+
+        if (!path.isAbsolute(configPath) && this.workspaceRoot) {
+            return path.join(this.workspaceRoot, configPath)
+        }
+
+        return configPath
     }
 
     public set fileName(fileName: string) {
         this.fields.name = fileName;
+    }
+
+    private get workspaceRoot(): string | undefined {
+        return (vscode.workspace.workspaceFolders || [])[0]?.uri?.fsPath
     }
 }
 
