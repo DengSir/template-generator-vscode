@@ -17,6 +17,7 @@ export class Fields {
     private _snakeCaseName: string;
     private _kebabCaseName: string;
     private _lowerDotCaseName: string;
+    private _upperSnakeCaseName: string;
 
     public get name() {
         return this._name;
@@ -40,6 +41,11 @@ export class Fields {
         return _.snakeCase(this._name);
     }
 
+    @once('_upperSnakeCaseName')
+    public get upperSnakeCaseName() {
+        return _.snakeCase(this._name).toUpperCase();
+    }
+
     @once('_kebabCaseName')
     public get kebabCaseName() {
         return _.kebabCase(this._name);
@@ -57,10 +63,24 @@ export class Fields {
         this._snakeCaseName = null;
         this._kebabCaseName = null;
         this._lowerDotCaseName = null;
+        this._upperSnakeCaseName = null;
     }
 
     public get date() {
         return new Date().toLocaleString();
+    }
+
+    public get dateMMDDYYYY() {
+        var date = new Date();
+        var year = date.getFullYear();
+
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+      
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        
+        return month + '-' + day + '-' + year;
     }
 
     public get author(): string {
